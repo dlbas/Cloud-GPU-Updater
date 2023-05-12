@@ -92,7 +92,8 @@ Function AWSPrivatedriver {
         }
     if ($GPU -eq "G4dn") {
         $Bucket = "nvidia-gaming"
-        $KeyPrefix = "windows/latest"
+        # https://github.com/parsec-cloud/Parsec-Cloud-Preparation-Tool/issues/93#issuecomment-1135741304
+        $KeyPrefix = "windows/vGPUSW-497.09"
         $S3Objects = Get-S3Object -BucketName $Bucket -KeyPrefix $KeyPrefix -Region us-east-1 -ProfileName $profileName
         $S3Objects.key | select-string -Pattern '.zip' 
         }
